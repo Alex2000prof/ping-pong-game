@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pong & Air Hockey Games</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script>
+  </head>
+  <body>
+    <div class="main-container">
+      <!-- Login Section -->
+      <div id="login-container" class="card">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button class="btn primary-btn" onclick="startGame()">Login</button>
+      </div>
+
+      <!-- Main Menu Section (will be visible after login) -->
+      <div id="main-menu" class="card" style="display: none">
+        <h2>Welcome to the Game Hub</h2>
+        <button class="btn primary-btn" onclick="goToPong()">Play Pong</button>
+        <button class="btn primary-btn" onclick="goToAirHockey()">
+          Play Air Hockey
+        </button>
+        <button class="btn secondary-btn" onclick="logout()">Logout</button>
+      </div>
+
+      <!-- Pong Game Section -->
+      <div id="game-container" class="card" style="display: none">
+        <div class="game-header">
+          <div id="scoreboard">
+            <p>
+              Player: <span id="player-score">0</span> | Computer:
+              <span id="computer-score">0</span>
+            </p>
+          </div>
+
+          <div id="controls">
+            <label for="scoreLimit">Set winning score:</label>
+            <input type="number" id="scoreLimit" value="5" min="1" max="20" />
+            <button class="btn primary-btn" onclick="submitScore()">
+              Submit
+            </button>
+            <button class="btn secondary-btn" onclick="pauseGame()">
+              Pause
+            </button>
+            <button class="btn secondary-btn" onclick="goToMenu()">
+              Back to Menu
+            </button>
+          </div>
+        </div>
+
+        <canvas id="pong" width="800" height="400"></canvas>
+
+        <div class="tabs">
+          <button class="tab-btn" id="history-tab" onclick="toggleHistory()">
+            Match History
+          </button>
+        </div>
+
+        <!-- Match History Section -->
+        <div id="history-container" class="history-container">
+          <h3>Match History:</h3>
+          <ul id="history-list"></ul>
+        </div>
+      </div>
+
+      <!-- Result Section -->
+      <div
+        id="result-container"
+        class="card result-container"
+        style="display: none"
+      >
+        <h2 id="winner-name"></h2>
+        <p id="result-score"></p>
+        <button class="btn secondary-btn" onclick="resetGame()">
+          Play Again
+        </button>
+      </div>
+
+      <!-- Air Hockey Section -->
+      <div id="airhockey-container" class="card" style="display: none">
+        <h2>Air Hockey Game</h2>
+        <button class="btn primary-btn" onclick="startAirHockey()">
+          Start Air Hockey
+        </button>
+        <button class="btn secondary-btn" onclick="goToMenu()">
+          Back to Menu
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
